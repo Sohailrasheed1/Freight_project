@@ -151,14 +151,14 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden text-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[92vh] flex flex-col overflow-hidden text-xs">
         
         {/* Modal Header */}
-        <div className="p-4 sm:px-6 bg-slate-900 text-white flex items-center justify-between shrink-0">
+        <div className="p-3.5 sm:p-4 sm:px-6 bg-slate-900 text-white flex items-center justify-between shrink-0">
           <div>
-            <h2 className="text-lg font-bold">Create New Job File (Section 6.2)</h2>
-            <p className="text-slate-400 text-xs mt-0.5">Enter mandatory shipment details, containers and initial rate costing.</p>
+            <h2 className="text-base sm:text-lg font-bold">Create New Job File (Section 6.2)</h2>
+            <p className="text-slate-400 text-[11px] sm:text-xs mt-0.5">Enter mandatory shipment details, containers and initial rate costing.</p>
           </div>
           <button onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
             <X className="w-5 h-5" />
@@ -166,7 +166,7 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
         </div>
 
         {/* Modal Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6 overflow-y-auto flex-1">
+        <form onSubmit={handleSubmit} className="p-3.5 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
           
           {/* Duplicate Warnings */}
           {(isDuplicateMBL || isDuplicateHBL) && (
@@ -178,8 +178,8 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
 
           {/* Section: Job Basics */}
           <div>
-            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-3 text-sm">1. Basic Information</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-2.5 sm:mb-3 text-xs sm:text-sm">1. Basic Information</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
               <div>
                 <label className="block text-slate-600 font-semibold mb-1">Date *</label>
                 <input
@@ -279,8 +279,8 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
 
           {/* Section: Transport Details */}
           <div>
-            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-3 text-sm">3. Transport & Routing</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-2.5 sm:mb-3 text-xs sm:text-sm">3. Transport & Routing</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
               <div>
                 <label className="block text-slate-600 font-semibold mb-1">MBL Number</label>
                 <input
@@ -377,9 +377,9 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
 
           {/* Section: Cargo & Commodity */}
           <div>
-            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-3 text-sm">4. Cargo Specification</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="col-span-2">
+            <h3 className="font-bold text-slate-900 border-b pb-1.5 mb-2.5 sm:mb-3 text-xs sm:text-sm">4. Cargo Specification</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
+              <div className="sm:col-span-2">
                 <label className="block text-slate-600 font-semibold mb-1">Commodity / Cargo Description *</label>
                 <input
                   type="text"
@@ -415,17 +415,17 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({ isOpen, onClose, onJ
           </div>
 
           {/* Real-time Profit Preview */}
-          <div className="bg-slate-900 text-white p-4 rounded-xl flex items-center justify-between">
+          <div className="bg-slate-900 text-white p-3.5 sm:p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4">
             <div>
-              <span className="text-[11px] text-slate-400 uppercase font-semibold">Automatic Initial Profitability:</span>
+              <span className="text-[10px] sm:text-[11px] text-slate-400 uppercase font-semibold">Initial Profitability:</span>
               <p className="text-xs text-slate-300 mt-0.5">
                 Buying: <span className="text-rose-400 font-bold">PKR {financials.total_buying.toLocaleString()}</span> | 
                 Selling: <span className="text-emerald-400 font-bold ml-1">PKR {financials.total_selling.toLocaleString()}</span>
               </p>
             </div>
-            <div className="text-right">
-              <span className="text-[11px] text-slate-400 uppercase font-semibold">Calculated Profit</span>
-              <p className="text-lg font-bold text-blue-400">PKR {financials.gross_profit.toLocaleString()} ({financials.profit_margin_pct.toFixed(1)}%)</p>
+            <div className="text-left sm:text-right">
+              <span className="text-[10px] sm:text-[11px] text-slate-400 uppercase font-semibold">Calculated Profit</span>
+              <p className="text-base sm:text-lg font-bold text-blue-400">PKR {financials.gross_profit.toLocaleString()} ({financials.profit_margin_pct.toFixed(1)}%)</p>
             </div>
           </div>
 

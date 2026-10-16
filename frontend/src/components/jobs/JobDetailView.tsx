@@ -207,54 +207,54 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
   const isReadOnly = formData.is_locked && currentRole !== 'Administrator';
 
   return (
-    <div className="p-6 space-y-5 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto">
       
       {/* Top Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <button
             onClick={onBack}
-            className="p-2 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 transition text-slate-700"
+            className="p-1.5 sm:p-2 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 transition text-slate-700 shrink-0"
             title="Back to Job Register"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{formData.job_number}</h1>
-              <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700">
-                {formData.mode} Freight • {formData.job_type}
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">{formData.job_number}</h1>
+              <span className="text-[11px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700">
+                {formData.mode} • {formData.job_type}
               </span>
               {formData.is_locked && (
-                <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 font-medium">
+                <span className="flex items-center gap-1 text-[11px] sm:text-xs px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 font-medium">
                   <Lock className="w-3 h-3" />
-                  <span>Profit Locked</span>
+                  <span>Locked</span>
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate max-w-xs sm:max-w-none">
               Party: <span className="font-semibold text-slate-800">{formData.customer_name}</span> | Date: {formData.date}
             </p>
           </div>
         </div>
 
         {/* Action buttons */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={() => exportSingleJobPDF(formData)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold shadow-sm transition"
           >
-            <FileText className="w-4 h-4" />
-            <span>Print / PDF Job File</span>
+            <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Print PDF</span>
           </button>
 
           {!isReadOnly && (
             <button
               onClick={handleSave}
-              className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
             >
-              <Save className="w-4 h-4" />
-              <span>{saveSuccess ? 'Saved!' : 'Save Changes'}</span>
+              <Save className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>{saveSuccess ? 'Saved!' : 'Save'}</span>
             </button>
           )}
         </div>
@@ -297,7 +297,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
       )}
 
       {/* Workflow Stepper (Section 8) */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+      <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
         <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
           Job Workflow Lifecycle
         </p>
@@ -341,51 +341,51 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
       </div>
 
       {/* Real-time Profitability Banner (Section 3) */}
-      <div className="bg-slate-900 text-white p-5 rounded-2xl shadow-md border border-slate-800">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full">
-            <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Buying Cost</span>
-              <p className="text-xl font-bold text-rose-400 mt-0.5">PKR {formData.total_buying.toLocaleString()}</p>
-              <span className="text-[10px] text-slate-400">Sum of Buying charges</span>
+      <div className="bg-slate-900 text-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-md border border-slate-800">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-6 w-full">
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Buying</span>
+              <p className="text-sm sm:text-xl font-bold text-rose-400 mt-0.5 break-words">PKR {formData.total_buying.toLocaleString()}</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">Vendor costs</span>
             </div>
-            <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Selling Revenue</span>
-              <p className="text-xl font-bold text-emerald-400 mt-0.5">PKR {formData.total_selling.toLocaleString()}</p>
-              <span className="text-[10px] text-slate-400">Sum of Selling charges</span>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Selling</span>
+              <p className="text-sm sm:text-xl font-bold text-emerald-400 mt-0.5 break-words">PKR {formData.total_selling.toLocaleString()}</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">Customer revenue</span>
             </div>
-            <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Gross Profit (Auto)</span>
-              <p className={`text-xl font-bold mt-0.5 ${formData.gross_profit >= 0 ? 'text-blue-400' : 'text-rose-400'}`}>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Gross Profit</span>
+              <p className={`text-sm sm:text-xl font-bold mt-0.5 break-words ${formData.gross_profit >= 0 ? 'text-blue-400' : 'text-rose-400'}`}>
                 PKR {formData.gross_profit.toLocaleString()}
               </p>
-              <span className="text-[10px] text-slate-400">Formula: Selling − Buying</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">Selling − Buying</span>
             </div>
-            <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Profit Margin %</span>
-              <p className="text-xl font-bold text-violet-300 mt-0.5">{formData.profit_margin_pct.toFixed(2)}%</p>
-              <span className="text-[10px] text-slate-400">Protected / Read-only</span>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Profit Margin</span>
+              <p className="text-sm sm:text-xl font-bold text-violet-300 mt-0.5">{formData.profit_margin_pct.toFixed(2)}%</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400">Auto calculated</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-200 gap-2 overflow-x-auto text-xs font-semibold">
+      <div className="flex border-b border-slate-200 gap-1 sm:gap-2 overflow-x-auto text-xs font-semibold scrollbar-none">
         {[
-          { id: 'shipment', label: '1. Shipment Information' },
-          { id: 'containers', label: `2. Containers Grid (${formData.containers.length})` },
-          { id: 'charges', label: '3. Buying & Selling Costing' },
+          { id: 'shipment', label: '1. Shipment Info' },
+          { id: 'containers', label: `2. Containers (${formData.containers.length})` },
+          { id: 'charges', label: '3. Costing & Charges' },
           { id: 'milestones', label: `4. Milestones (${formData.milestones.length})` },
           { id: 'documents', label: `5. Documents (${formData.documents.length})` },
-          { id: 'audit', label: `6. Audit Trail (${formData.audit_logs.length})` },
+          { id: 'audit', label: `6. Audit Log (${formData.audit_logs.length})` },
         ].map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as unknown as typeof activeTab)}
-            className={`py-3 px-4 border-b-2 whitespace-nowrap transition cursor-pointer ${
+            className={`py-2.5 px-3 sm:py-3 sm:px-4 border-b-2 whitespace-nowrap transition cursor-pointer text-xs ${
               activeTab === tab.id
-                ? 'border-blue-600 text-blue-600'
+                ? 'border-blue-600 text-blue-600 font-bold'
                 : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'
             }`}
           >
@@ -396,7 +396,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* TAB 1: SHIPMENT INFORMATION */}
       {activeTab === 'shipment' && (
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6 text-xs">
+        <div className="bg-white p-3.5 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-6 text-xs">
           <div>
             <h2 className="text-sm font-bold text-slate-900 border-b pb-2 mb-4">Core Job & Parties (Section 2 & 9)</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -635,7 +635,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* TAB 2: CONTAINER DETAILS GRID */}
       {activeTab === 'containers' && (
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs">
+        <div className="bg-white p-3.5 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-bold text-slate-900">Container Details Grid (Section 2, Field 10)</h2>
@@ -654,7 +654,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[650px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                   <th className="p-2.5">Type</th>
@@ -768,10 +768,10 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
         <div className="space-y-6 text-xs">
           
           {/* BUYING CHARGES (COSTS) */}
-          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+          <div className="bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-sm font-bold text-rose-800 flex items-center gap-1.5">
+                <h2 className="text-sm font-bold text-rose-800 flex items-center gap-1.5 flex-wrap">
                   <span>Buying Charges & Vendor Costs (Section 7)</span>
                   <span className="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full font-bold">
                     PKR {formData.total_buying.toLocaleString()}
@@ -783,16 +783,16 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
                 <button
                   type="button"
                   onClick={addBuyingChargeRow}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-medium transition cursor-pointer"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-medium transition cursor-pointer text-xs shrink-0"
                 >
                   <Plus className="w-3.5 h-3.5" />
-                  <span>Add Buying Charge</span>
+                  <span>Add Cost</span>
                 </button>
               )}
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full min-w-[820px] text-left border-collapse">
                 <thead>
                   <tr className="bg-rose-50/70 text-slate-700 font-bold border-b border-rose-100">
                     <th className="p-2.5">Charge Type</th>
@@ -946,10 +946,10 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
           </div>
 
           {/* SELLING CHARGES (REVENUE) */}
-          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+          <div className="bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-sm font-bold text-emerald-800 flex items-center gap-1.5">
+                <h2 className="text-sm font-bold text-emerald-800 flex items-center gap-1.5 flex-wrap">
                   <span>Selling Charges & Customer Revenue (Section 7)</span>
                   <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">
                     PKR {formData.total_selling.toLocaleString()}
@@ -961,16 +961,16 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
                 <button
                   type="button"
                   onClick={addSellingChargeRow}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition cursor-pointer"
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition cursor-pointer text-xs shrink-0"
                 >
                   <Plus className="w-3.5 h-3.5" />
-                  <span>Add Selling Charge</span>
+                  <span>Add Revenue</span>
                 </button>
               )}
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full min-w-[820px] text-left border-collapse">
                 <thead>
                   <tr className="bg-emerald-50/70 text-slate-700 font-bold border-b border-emerald-100">
                     <th className="p-2.5">Charge Type</th>

@@ -90,16 +90,16 @@ export const ReportsView: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-6 max-w-7xl mx-auto text-xs">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto text-xs">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Financial & Operational Reports (Section 11)</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Financial & Operational Reports (Section 11)</h1>
           <p className="text-slate-500 text-xs mt-0.5">Comprehensive job costing, customer revenue, profit margins and route performance.</p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {selectedReport === 'job_profit' ? (
             <>
               <button
@@ -181,7 +181,7 @@ export const ReportsView: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[750px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 text-[11px]">
                   <th className="p-3 pl-5">Job Number</th>
@@ -226,7 +226,7 @@ export const ReportsView: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[750px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 text-[11px]">
                   <th className="p-3 pl-5">Code</th>
@@ -265,7 +265,7 @@ export const ReportsView: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[750px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 text-[11px]">
                   <th className="p-3 pl-5">Trade Lane / Route</th>

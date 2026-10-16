@@ -114,44 +114,44 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
   };
 
   return (
-    <div className="p-6 space-y-5 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto">
       
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Job Register</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Job Register</h1>
           <p className="text-slate-500 text-xs mt-0.5">
             Operational register with automatic multi-currency charges, buying cost, selling revenue and profit.
           </p>
         </div>
 
         {/* Action Buttons: Export to Excel, PDF, New Job */}
-        <div className="flex items-center gap-2.5 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-wrap">
           <button
             onClick={() => exportJobsToExcel(filteredJobs)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-sm transition"
             title="Export filtered records to Microsoft Excel"
           >
-            <FileSpreadsheet className="w-4 h-4" />
+            <FileSpreadsheet className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Excel Export</span>
           </button>
 
           <button
             onClick={() => exportJobsToPDF(filteredJobs)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-rose-700 hover:bg-rose-800 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-rose-700 hover:bg-rose-800 text-white rounded-lg text-xs font-semibold shadow-sm transition"
             title="Export filtered records to PDF document"
           >
-            <FileText className="w-4 h-4" />
+            <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>PDF Export</span>
           </button>
 
           {(currentRole === 'Administrator' || currentRole === 'Operations' || currentRole === 'Sales') && (
             <button
               onClick={onOpenNewJob}
-              className="flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
             >
-              <Plus className="w-4 h-4" />
-              <span>Add New Job</span>
+              <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Add Job</span>
             </button>
           )}
 
@@ -162,20 +162,21 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
                   clearAllDemoData();
                 }
               }}
-              className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 border border-slate-200 rounded-lg text-xs font-medium transition cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 border border-slate-200 rounded-lg text-xs font-medium transition cursor-pointer"
               title="Clear sample demo jobs to start with clean real data"
             >
               <Trash2 className="w-3.5 h-3.5 text-rose-500" />
-              <span>Clear Demo Data</span>
+              <span className="hidden xs:inline sm:inline">Clear Demo</span>
+              <span className="xs:hidden sm:hidden">Clear</span>
             </button>
           ) : (
             <button
               onClick={() => resetToDemoData()}
-              className="flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-medium transition cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-medium transition cursor-pointer"
               title="Restore sample demo jobs"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Load Demo Data</span>
+              <span>Load Demo</span>
             </button>
           )}
         </div>
@@ -304,7 +305,7 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
       {/* Main Table Card */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full min-w-[950px] text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 uppercase tracking-wider text-[11px]">
                 <th 

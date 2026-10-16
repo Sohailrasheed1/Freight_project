@@ -129,19 +129,19 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
   const isAllowedToEdit = currentRole === 'Administrator' || currentRole === 'Sales' || currentRole === 'Operations';
 
   return (
-    <div className="p-6 space-y-5 max-w-7xl mx-auto text-xs">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto text-xs">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{getTitle()}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">{getTitle()}</h1>
           <p className="text-slate-500 text-xs mt-0.5">{getSubtitle()}</p>
         </div>
 
         {isAllowedToEdit && (
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-sm transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-sm transition shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Record</span>
@@ -163,10 +163,11 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
 
       {/* Tables based on Type */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="overflow-x-auto">
         
         {/* CUSTOMERS TABLE */}
         {type === 'customers' && (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[750px] text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                 <th className="p-3 pl-5">Code</th>
@@ -210,7 +211,7 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
 
         {/* SHIPPERS TABLE */}
         {type === 'shippers' && (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[700px] text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                 <th className="p-3 pl-5">Code</th>
@@ -240,7 +241,7 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
 
         {/* CONSIGNEES TABLE */}
         {type === 'consignees' && (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[700px] text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                 <th className="p-3 pl-5">Code</th>
@@ -270,7 +271,7 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
 
         {/* VENDORS TABLE */}
         {type === 'vendors' && (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[700px] text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                 <th className="p-3 pl-5">Code</th>
@@ -304,7 +305,7 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
 
         {/* PORTS TABLE */}
         {type === 'ports' && (
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[600px] text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                 <th className="p-3 pl-5">Code</th>
@@ -334,12 +335,13 @@ export const MasterDataView: React.FC<MasterDataViewProps> = ({ type }) => {
           </table>
         )}
 
+        </div>
       </div>
 
       {/* ADD NEW MODAL */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl max-w-lg w-full p-4 sm:p-6 space-y-4 max-h-[92vh] overflow-y-auto">
             <h2 className="text-base font-bold text-slate-900 border-b pb-2">
               Add New {type.slice(0, -1).toUpperCase()}
             </h2>

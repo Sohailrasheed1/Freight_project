@@ -24,9 +24,9 @@ export const DocumentsView: React.FC = () => {
   );
 
   return (
-    <div className="p-6 space-y-5 max-w-7xl mx-auto text-xs">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto text-xs">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Central Document Repository (Section 13)</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Central Document Repository (Section 13)</h1>
         <p className="text-slate-500 text-xs mt-0.5">Secure job-linked digital storage for Bills of Lading, Commercial Invoices, Packing Lists and Quotations.</p>
       </div>
 
@@ -42,7 +42,8 @@ export const DocumentsView: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[700px] text-left border-collapse">
           <thead>
             <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
               <th className="p-3 pl-5">Document Name</th>
@@ -91,6 +92,7 @@ export const DocumentsView: React.FC = () => {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

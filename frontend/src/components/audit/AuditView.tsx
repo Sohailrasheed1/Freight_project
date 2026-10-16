@@ -22,9 +22,9 @@ export const AuditView: React.FC = () => {
   );
 
   return (
-    <div className="p-6 space-y-5 max-w-7xl mx-auto text-xs">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto text-xs">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Security & System Audit Log (Section 14)</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Security & System Audit Log (Section 14)</h1>
         <p className="text-slate-500 text-xs mt-0.5">
           Tamper-evident audit trail capturing user, date/time, action and changed data for financial and operational governance.
         </p>
@@ -42,7 +42,8 @@ export const AuditView: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[650px] text-left border-collapse">
           <thead>
             <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
               <th className="p-3 pl-5">Timestamp</th>
@@ -70,6 +71,7 @@ export const AuditView: React.FC = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
