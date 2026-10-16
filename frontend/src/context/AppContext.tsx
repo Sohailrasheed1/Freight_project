@@ -57,6 +57,10 @@ interface AppContextType {
   checkDuplicateMBL: (mbl: string, currentJobId?: string) => boolean;
   checkDuplicateHBL: (hbl: string, currentJobId?: string) => boolean;
   
+  // Demo Data Management
+  clearAllDemoData: () => void;
+  resetToDemoData: () => void;
+  
   // Helpers
   calculateFinancials: (buying: BuyingCharge[], selling: SellingCharge[]) => {
     total_buying: number;
@@ -399,6 +403,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const clearAllDemoData = () => {
+    setJobs([]);
+    localStorage.setItem('ffms_jobs', JSON.stringify([]));
+  };
+
+  const resetToDemoData = () => {
+    setJobs(initialJobs);
+    localStorage.setItem('ffms_jobs', JSON.stringify(initialJobs));
+  };
+
   return (
     <AppContext.Provider value={{
       jobs,
@@ -423,6 +437,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       addPort,
       checkDuplicateMBL,
       checkDuplicateHBL,
+      clearAllDemoData,
+      resetToDemoData,
       calculateFinancials
     }}>
       {children}

@@ -11,7 +11,9 @@ import {
   X, 
   Eye, 
   Lock,
-  ArrowUpDown
+  ArrowUpDown,
+  Trash2,
+  RotateCcw
 } from 'lucide-react';
 
 interface JobRegisterProps {
@@ -20,7 +22,7 @@ interface JobRegisterProps {
 }
 
 export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNewJob }) => {
-  const { jobs, currentRole } = useApp();
+  const { jobs, currentRole, clearAllDemoData, resetToDemoData } = useApp();
 
   // Filters state
   const [searchTerm, setSearchTerm] = useState('');
@@ -150,6 +152,30 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
             >
               <Plus className="w-4 h-4" />
               <span>Add New Job</span>
+            </button>
+          )}
+
+          {jobs.length > 0 ? (
+            <button
+              onClick={() => {
+                if (window.confirm('Kya aap tamam demo jobs khatam karke bilkul fresh (khali) register shuru karna chahte hain?')) {
+                  clearAllDemoData();
+                }
+              }}
+              className="flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 border border-slate-200 rounded-lg text-xs font-medium transition cursor-pointer"
+              title="Clear sample demo jobs to start with clean real data"
+            >
+              <Trash2 className="w-3.5 h-3.5 text-rose-500" />
+              <span>Clear Demo Data</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => resetToDemoData()}
+              className="flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-medium transition cursor-pointer"
+              title="Restore sample demo jobs"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Load Demo Data</span>
             </button>
           )}
         </div>
