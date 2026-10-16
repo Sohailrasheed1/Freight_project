@@ -1,0 +1,387 @@
+FREIGHT FORWARDINGMANAGEMENT SYSTEM
+Software Requirements & Development Blueprint
+A practical, job-centric system for freight forwarding operations,shipment management, costing, revenue and profitability.
+Prepared: 15 October 2026
+1. Executive Summary
+The proposed Freight Forwarding Management System (FFMS) is a small, professional and user-friendly application designed for daily freight forwarding operations. It will manage customers, jobs/shipments, shipment details, containers, buying costs, selling revenue, documents, reporting and automatic job profitability.
+The recommended architecture is job-centric: every shipment/job acts as the central record to which shipment information, containers, buying charges, selling charges, documents, milestones and profitability are attached.
+2. Mandatory Shipment Details
+#
+| Field
+| Requirement
+|
+1
+| Job Number / File Number
+| Unique job/file identifier; preferably auto-generated.
+|
+2
+| Date
+| Job creation or shipment date.
+|
+3
+| Party / Customer Name
+| Selected from Customer Master.
+|
+4
+| Shipper Name
+| Selected from Shipper Master.
+|
+5
+| MBL Number
+| Master Bill of Lading number.
+|
+6
+| HBL Number
+| House Bill of Lading number.
+|
+7
+| POL
+| Port of Loading.
+|
+8
+| POD
+| Port of Discharge.
+|
+9
+| Commodity / Cargo Description
+| Cargo/commodity description.
+|
+10
+| Volume / Container Quantity & Type
+| 20', 40', 40 HC, CBM, etc.; preferably stored in a container grid.
+|
+11
+| Buying Rate / Total Cost
+| Calculated from individual buying charges or entered as applicable.
+|
+12
+| Selling Rate / Total Revenue
+| Calculated from individual selling charges or entered as applicable.
+|
+13
+| Profit
+| Automatically calculated as Selling Amount minus Buying Amount.
+|
+3. Automatic Profit Calculation
+Core formula:
+PROFIT = TOTAL SELLING AMOUNT − TOTAL BUYING AMOUNT
+Whenever a buying or selling charge changes, the system must recalculate total buying, total selling and profit automatically. Direct manual editing of calculated profit should not be permitted for ordinary users.
+4. Recommended Technology
+Component
+| Recommendation
+| Purpose
+|
+Frontend
+| React / Next.js
+| Modern, responsive web interface.
+|
+Backend
+| Python Django + Django REST Framework
+| Secure, maintainable business application and API layer.
+|
+Database
+| PostgreSQL
+| Reliable relational database suitable for multi-user operations.
+|
+Hosting
+| Cloud VPS initially
+| Centralized access for authorized users.
+|
+Authentication
+| Role-based login
+| User permissions and security.
+|
+Reports
+| PDF / Excel / Print
+| Operational and management reporting.
+|
+Document Storage
+| Secure job-linked file storage
+| BLs, invoices, quotations and other documents.
+|
+5. Proposed Main Menu
+Dashboard
+Jobs / Shipments
+Customers
+Shippers
+Consignees
+Ports
+Vendors
+Buying Rates
+Selling Rates
+Quotations
+Documents
+Reports
+Users & Security
+Settings
+6. Core Screens
+6.1 Dashboard
+The dashboard should provide an immediate management view of operational volume and financial performance.
+KPI
+| Purpose
+|
+Total Jobs
+| Total shipment/job records.
+|
+Open Jobs
+| Jobs not yet closed.
+|
+Total Buying
+| Total recorded costs.
+|
+Total Selling
+| Total recorded revenue.
+|
+Gross Profit
+| Selling less buying.
+|
+Profit Margin %
+| Profit divided by selling revenue.
+|
+This Month's Jobs
+| Current-period job volume.
+|
+This Month's Profit
+| Current-period profitability.
+|
+6.2 Add New Job
+Job Information: Job Number, Job Date, Job Type, Mode, Customer, Shipper, Consignee, Status
+Shipment: MBL, HBL, Booking No., Vessel, Voyage, POL, POD, ETD, ETA, Commodity, Packages, Weight, Volume
+Container Details: Container Type, Quantity, Container Number, CBM
+Buying Charges: Charge Type, Vendor, Quantity, Rate, Currency, Amount
+Selling Charges: Charge Type, Customer, Quantity, Rate, Currency, Amount
+Documents: Upload and view documents attached to the job
+6.3 Job Register
+A searchable table showing Job No., Customer, MBL, HBL, POL, POD, Buying, Selling, Profit, Margin and Status. Clicking a row should open the complete job file.
+7. Buying & Selling Charge Model
+The system should not depend only on one Buying Amount and one Selling Amount field. A charge-line model is recommended so a job can contain multiple cost and revenue items.
+Buying Charge Examples
+| Selling Charge Examples
+|
+Ocean Freight
+| Ocean Freight
+|
+Documentation
+| Documentation
+|
+Handling
+| Handling
+|
+THC / Local Charges
+| THC / Local Charges
+|
+Customs / Other Charges
+| Other Charges
+|
+Each charge should support quantity, rate, currency, exchange rate where applicable, amount, vendor/customer and optional remarks.
+8. Job Workflow
+NEW → BOOKED → DOCUMENTATION → IN TRANSIT → ARRIVED → DELIVERED → INVOICED → COST COMPLETED → CLOSED
+9. Customer & Master Data
+Customer, shipper, consignee, vendor and port masters should allow users to save information once and reuse it through searchable dropdowns.
+Customer Master Field
+| Purpose
+|
+Customer Code
+| Unique customer identifier.
+|
+Customer Name
+| Official customer name.
+|
+NTN / STRN
+| Tax information where required.
+|
+Address / City
+| Customer location.
+|
+Contact Person / Phone / Email
+| Operational communication.
+|
+Payment Terms
+| Commercial terms.
+|
+Currency
+| Default transaction currency.
+|
+Credit Limit
+| Optional credit control.
+|
+Active / Inactive
+| Master record status.
+|
+10. Search & Filters
+Search should support Job Number, Customer, Shipper, MBL, HBL, POL, POD, Container Number, Vessel, Commodity, Job Status, Import/Export, Sea/Air/Road and Date From/To.
+11. Reports
+Job Register
+Job-wise Profitability
+Customer-wise Profit
+Monthly Profit
+Daily Job Report
+POL/POD Profitability
+Buying Cost Analysis
+Selling Revenue Analysis
+Open / Closed Job Report
+12. Excel & PDF Export
+Major registers and reports should be exportable to Excel and PDF. Excel exports should contain actual structured data suitable for further analysis.
+13. Documents
+Each job should have a document area for MBL, HBL, commercial invoice, packing list, quotation, vendor invoice, customer invoice and other operational documents.
+14. Security & User Roles
+Role
+| Typical Access
+|
+Administrator
+| Full system access and configuration.
+|
+Operations
+| Jobs, shipment information, documents and milestones.
+|
+Sales
+| Customers, quotations and selling rates.
+|
+Accounts
+| Buying, selling, profitability and financial reports.
+|
+Management
+| Dashboard and management reports.
+|
+An audit log should record user, date/time, action and changed information. Closed jobs should be protected from unauthorized changes.
+15. Backup Plan
+Automatic daily database backup.
+30-day rolling backup retention.
+Weekly full backup.
+Monthly archival backup.
+Backup verification.
+Periodic restore testing.
+At least one independent/offline backup copy.
+16. Additional Recommended Features
+Feature
+| Benefit
+|
+Multi-currency
+| Foreign currency amount, exchange rate and base-currency amount.
+|
+Rate Cards
+| Supplier and customer rates by route, container type, currency and validity.
+|
+Quotation-to-Job Conversion
+| Convert an approved quotation directly into a job.
+|
+Shipment Milestones
+| Booking, loaded, departed, transshipment, arrived, customs, delivery.
+|
+Cost Accrual
+| Record estimated costs before vendor invoices arrive.
+|
+Missing Cost Warning
+| Flag jobs with revenue but no recorded buying cost.
+|
+Low Margin Warning
+| Alert when job margin falls below a defined threshold.
+|
+Duplicate MBL/HBL Warning
+| Warn when a bill number already exists.
+|
+Profit Lock
+| Require authorization to reopen a closed job.
+|
+Tally Integration – Phase 2
+| Optional customer/vendor/invoice/expense synchronization.
+|
+17. Recommended Database Structure
+Core tables: Users, Customers, Shippers, Consignees, Vendors, Ports, Jobs, Containers, BuyingCharges, SellingCharges, Quotations, Documents, JobMilestones, RateCards, Currencies, ExchangeRates and AuditLogs.
+18. Development Cost Estimate
+Level
+| Scope
+| Indicative Cost
+|
+Prototype
+| UI + database concept
+| PKR 100,000–200,000
+|
+MVP
+| Core jobs + costing + reports
+| PKR 500,000–800,000
+|
+Professional V1
+| Full core requirements
+| PKR 900,000–1,500,000
+|
+Advanced
+| V1 + quotation + rates + tracking + Tally integration
+| PKR 1,500,000–2,500,000+
+|
+These are planning estimates for budgeting purposes, not quotations from a particular developer.
+19. Estimated Development Timeline
+Stage
+| Estimated Duration
+|
+Requirements & database design
+| 1 week
+|
+UI/UX design
+| 1–2 weeks
+|
+Core database/backend
+| 2–3 weeks
+|
+Job management
+| 2 weeks
+|
+Buying/Selling/Profit
+| 1–2 weeks
+|
+Dashboard & reports
+| 1–2 weeks
+|
+Security & audit
+| 1 week
+|
+Excel/PDF/export
+| 1 week
+|
+Testing & corrections
+| 2 weeks
+|
+User acceptance testing
+| 1 week
+|
+Deployment/training
+| 2–3 days
+|
+Overall target for a properly engineered Version 1: approximately 10–14 weeks.
+20. Testing & Acceptance Requirements
+Test
+| Expected Result
+|
+Basic Profit
+| Buying 100,000; Selling 125,000 → Profit 25,000.
+|
+Multiple Buying Charges
+| System totals all cost lines correctly.
+|
+Multiple Selling Charges
+| System totals all revenue lines correctly.
+|
+Change Buying
+| Changing a cost automatically updates profit.
+|
+Change Selling
+| Changing revenue automatically updates profit.
+|
+Duplicate MBL/HBL
+| System warns the user when a duplicate exists.
+|
+Unauthorized Profit Modification
+| Ordinary users cannot manually override calculated profit.
+|
+Backup & Restore
+| Backup can be restored successfully.
+|
+Concurrent Users
+| Multiple users can work without data corruption.
+|
+21. Recommended Implementation Strategy
+Build Version 1 around the Job File rather than as a simple shipment register. Every job should connect Customer → Shipment → Containers → Buying → Selling → Documents → Milestones → Profit. Once this foundation is stable, add quotations, rate management, tracking, accounting integration and customer-facing features.
+22. Proposed Future Architecture
+The system should be designed so that future integrations can include Tally Prime, email, WhatsApp, customer portal, shipment tracking APIs and relevant customs/FBR integrations.
+23. Final Recommendation
+The recommended solution is a web-based, multi-user Freight Forwarding Management System using React/Next.js, Django/REST and PostgreSQL. The first release should focus on operational simplicity, accurate job costing, automatic profitability, searchable records, reporting, security and backups. The application should be tested against defined acceptance cases before final delivery.
