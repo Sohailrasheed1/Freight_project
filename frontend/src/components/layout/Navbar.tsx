@@ -1,14 +1,14 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { UserRole } from '../../types';
-import { Ship, Shield, Bell, Plus, UserCheck } from 'lucide-react';
+import { Ship, Shield, Bell, Plus, UserCheck, LogOut } from 'lucide-react';
 
 interface NavbarProps {
   onOpenNewJob: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob }) => {
-  const { currentRole, setCurrentRole, currentUser, jobs, isServerConnected } = useApp();
+  const { currentRole, setCurrentRole, currentUser, jobs, isServerConnected, logout } = useApp();
 
   const roles: UserRole[] = ['Administrator', 'Operations', 'Sales', 'Accounts', 'Management'];
 
@@ -101,10 +101,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob }) => {
             </div>
           </div>
 
-          {/* Current User Badge */}
-          <div className="hidden md:flex items-center gap-2 text-xs text-slate-300 border-l border-slate-700 pl-4">
-            <UserCheck className="w-4 h-4 text-emerald-400" />
-            <span>{currentUser}</span>
+          {/* Current User Badge & Logout */}
+          <div className="flex items-center gap-3 border-l border-slate-700 pl-4">
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-slate-300">
+              <UserCheck className="w-4 h-4 text-emerald-400" />
+              <span>{currentUser}</span>
+            </div>
+            <button
+              onClick={() => logout()}
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-900/40 text-slate-400 hover:text-rose-300 border border-slate-700 transition flex items-center gap-1 text-xs cursor-pointer"
+              title="Sign Out / Exit"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
           </div>
 
         </div>

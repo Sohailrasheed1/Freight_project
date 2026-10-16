@@ -10,13 +10,18 @@ import { MasterDataView } from './components/masters/MasterDataView';
 import { ReportsView } from './components/reports/ReportsView';
 import { DocumentsView } from './components/documents/DocumentsView';
 import { AuditView } from './components/audit/AuditView';
+import { LoginScreen } from './components/auth/LoginScreen';
 import { Job } from './types';
 
 const MainAppContent: React.FC = () => {
-  const { jobs } = useApp();
+  const { jobs, isAuthenticated } = useApp();
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isNewJobModalOpen, setIsNewJobModalOpen] = useState(false);
+
+  if (!isAuthenticated) {
+    return <LoginScreen />;
+  }
 
   const openJobCount = jobs.filter(j => j.status !== 'CLOSED').length;
 

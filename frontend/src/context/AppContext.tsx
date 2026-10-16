@@ -34,7 +34,10 @@ interface AppContextType {
   // Server state
   isServerConnected: boolean;
 
-  // User & Role
+  // User & Role & Auth
+  isAuthenticated: boolean;
+  login: (username: string, password: string) => boolean;
+  logout: () => void;
   currentRole: UserRole;
   setCurrentRole: (role: UserRole) => void;
   currentUser: string;
@@ -104,8 +107,81 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [isServerConnected, setIsServerConnected] = useState(false);
-  const [currentRole, setCurrentRole] = useState<UserRole>('Administrator');
-  const currentUser = currentRole === 'Administrator' ? 'Admin Officer' : `${currentRole} User`;
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    return localStorage.getItem('ffms_auth') === 'true';
+  });
+  const [currentRole, setCurrentRole] = useState<UserRole>(() => {
+    const saved = localStorage.getItem('ffms_role');
+    return (saved as UserRole) || 'Administrator';
+  });
+  const [currentUser, setCurrentUser] = useState<string>(() => {
+    const saved = localStorage.getItem('ffms_user');
+    return saved || 'Admin Officer';
+  });
+
+  const login = (username: string, pass: string): boolean => {
+    const u = username.trim().toLowerCase();
+    const p = pass.trim();
+
+    if ((u === 'admin' && (p === 'admin' || p === 'admin123')) || u === 'admin@freight.com') {
+      setCurrentRole('Administrator');
+      setCurrentUser('Admin Officer');
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Administrator');
+      localStorage.setItem('ffms_user', 'Admin Officer');
+      return true;
+    } else if (u === 'ops' || u === 'operations') {
+      setCurrentRole('Operations');
+      setCurrentUser('Operations Officer');
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Operations');
+      localStorage.setItem('ffms_user', 'Operations Officer');
+      return true;
+    } else if (u === 'accounts' || u === 'finance') {
+      setCurrentRole('Accounts');
+      setCurrentUser('Accounts Officer');
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Accounts');
+      localStorage.setItem('ffms_user', 'Accounts Officer');
+      return true;
+    } else if (u === 'sales') {
+      setCurrentRole('Sales');
+      setCurrentUser('Sales Executive');
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Sales');
+      localStorage.setItem('ffms_user', 'Sales Executive');
+      return true;
+    } else if (u === 'management' || u === 'director') {
+      setCurrentRole('Management');
+      setCurrentUser('Director (Management)');
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Management');
+      localStorage.setItem('ffms_user', 'Director (Management)');
+      return true;
+    } else if (p.length >= 3 && u.length >= 3) {
+      // General custom login
+      setCurrentRole('Operations');
+      setCurrentUser(username);
+      setIsAuthenticated(true);
+      localStorage.setItem('ffms_auth', 'true');
+      localStorage.setItem('ffms_role', 'Operations');
+      localStorage.setItem('ffms_user', username);
+      return true;
+    }
+    return false;
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('ffms_auth');
+    localStorage.removeItem('ffms_role');
+    localStorage.removeItem('ffms_user');
+  };
 
   // Sync with backend server on startup
   useEffect(() => {
@@ -422,6 +498,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       vendors,
       ports,
       isServerConnected,
+      isAuthenticated,
+      login,
+      logout,
       currentRole,
       setCurrentRole,
       currentUser,
