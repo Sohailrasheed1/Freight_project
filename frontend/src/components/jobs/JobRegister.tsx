@@ -400,7 +400,7 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
                     <tr
                       key={job.id}
                       onClick={() => onSelectJob(job)}
-                      className={`hover:bg-blue-50/60 transition cursor-pointer ${
+                      className={`hover:bg-sky-50/70 hover:shadow-2xs transition-all duration-150 cursor-pointer ${
                         job.is_locked ? 'bg-slate-50/50' : ''
                       }`}
                     >

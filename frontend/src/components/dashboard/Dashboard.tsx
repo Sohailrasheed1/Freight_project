@@ -89,7 +89,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 w-full">
         
         {/* 1. Total Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Jobs</span>
             <div className="p-1.5 sm:p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0">
@@ -103,7 +103,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 2. Open Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Open Jobs</span>
             <div className="p-1.5 sm:p-2 bg-amber-50 text-amber-600 rounded-lg shrink-0">
@@ -117,7 +117,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 3. Total Buying Cost */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Buying</span>
             <div className="p-1.5 sm:p-2 bg-rose-50 text-rose-600 rounded-lg shrink-0">
@@ -131,7 +131,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 4. Total Selling Revenue */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Selling</span>
             <div className="p-1.5 sm:p-2 bg-emerald-50 text-emerald-600 rounded-lg shrink-0">
@@ -145,7 +145,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 5. Gross Profit */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Gross Profit</span>
             <div className="p-1.5 sm:p-2 bg-indigo-50 text-indigo-600 rounded-lg shrink-0">
@@ -159,7 +159,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 6. Profit Margin % */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Margin %</span>
             <div className="p-1.5 sm:p-2 bg-violet-50 text-violet-600 rounded-lg shrink-0">
@@ -173,7 +173,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 7. This Month's Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Month's Jobs</span>
             <div className="p-1.5 sm:p-2 bg-sky-50 text-sky-600 rounded-lg shrink-0">
@@ -187,7 +187,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
         </div>
 
         {/* 8. This Month's Profit */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200 interactive-card min-w-0 cursor-default">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Month's Profit</span>
             <div className="p-1.5 sm:p-2 bg-teal-50 text-teal-600 rounded-lg shrink-0">
@@ -212,9 +212,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
           ].map(st => {
             const count = statusCounts[st] || 0;
             return (
-              <div key={st} className="bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100 text-center min-w-0">
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 block truncate">{st}</span>
-                <span className={`text-sm sm:text-lg font-bold block mt-0.5 sm:mt-1 ${count > 0 ? 'text-blue-600' : 'text-slate-400'}`}>
+              <div key={st} className="bg-slate-50/80 hover:bg-sky-50/80 p-2 sm:p-2.5 rounded-lg border border-slate-150 hover:border-sky-300 transition-all duration-150 text-center min-w-0 cursor-default group shadow-2xs hover:shadow-xs">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 group-hover:text-sky-700 block truncate transition-colors">{st}</span>
+                <span className={`text-sm sm:text-lg font-bold block mt-0.5 sm:mt-1 ${count > 0 ? 'text-sky-600 group-hover:text-sky-700' : 'text-slate-400'}`}>
                   {count}
                 </span>
               </div>
@@ -266,7 +266,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
                 <tr 
                   key={job.id}
                   onClick={() => onSelectJob(job)}
-                  className="hover:bg-blue-50/50 transition cursor-pointer"
+                  className="hover:bg-sky-50/70 hover:shadow-xs transition-all duration-150 cursor-pointer group"
                 >
                   <td className="p-3 pl-6 font-semibold text-blue-600">{job.job_number}</td>
                   <td className="p-3">{job.date}</td>

@@ -344,24 +344,24 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
       <div className="bg-slate-900 text-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-md border border-slate-800 w-full max-w-full overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-6 w-full">
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+            <div className="bg-slate-800/50 hover:bg-slate-800/80 p-2.5 sm:p-3 rounded-lg border border-slate-700/50 hover:border-rose-500/50 transition-all duration-200 min-w-0 cursor-default">
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Total Buying</span>
               <p className="text-xs xs:text-sm sm:text-xl font-bold text-rose-400 mt-0.5 truncate block" title={`PKR ${formData.total_buying.toLocaleString()}`}>PKR {formData.total_buying.toLocaleString()}</p>
               <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Vendor costs</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+            <div className="bg-slate-800/50 hover:bg-slate-800/80 p-2.5 sm:p-3 rounded-lg border border-slate-700/50 hover:border-emerald-500/50 transition-all duration-200 min-w-0 cursor-default">
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Total Selling</span>
               <p className="text-xs xs:text-sm sm:text-xl font-bold text-emerald-400 mt-0.5 truncate block" title={`PKR ${formData.total_selling.toLocaleString()}`}>PKR {formData.total_selling.toLocaleString()}</p>
               <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Customer revenue</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+            <div className="bg-slate-800/50 hover:bg-slate-800/80 p-2.5 sm:p-3 rounded-lg border border-slate-700/50 hover:border-sky-500/50 transition-all duration-200 min-w-0 cursor-default">
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Gross Profit</span>
-              <p className={`text-xs xs:text-sm sm:text-xl font-bold mt-0.5 truncate block ${formData.gross_profit >= 0 ? 'text-blue-400' : 'text-rose-400'}`} title={`PKR ${formData.gross_profit.toLocaleString()}`}>
+              <p className={`text-xs xs:text-sm sm:text-xl font-bold mt-0.5 truncate block ${formData.gross_profit >= 0 ? 'text-sky-400' : 'text-rose-400'}`} title={`PKR ${formData.gross_profit.toLocaleString()}`}>
                 PKR {formData.gross_profit.toLocaleString()}
               </p>
               <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Selling − Buying</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+            <div className="bg-slate-800/50 hover:bg-slate-800/80 p-2.5 sm:p-3 rounded-lg border border-slate-700/50 hover:border-violet-500/50 transition-all duration-200 min-w-0 cursor-default">
               <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Profit Margin</span>
               <p className="text-xs xs:text-sm sm:text-xl font-bold text-violet-300 mt-0.5 truncate block">{formData.profit_margin_pct.toFixed(2)}%</p>
               <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Auto calculated</span>
