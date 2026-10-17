@@ -148,7 +148,7 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
           {(currentRole === 'Administrator' || currentRole === 'Operations' || currentRole === 'Sales') && (
             <button
               onClick={onOpenNewJob}
-              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-lg text-xs font-bold shadow-md shadow-amber-400/20 transition cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>Add Job</span>

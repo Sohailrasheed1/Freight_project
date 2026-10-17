@@ -31,24 +31,24 @@ export const LoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-teal-950 to-slate-900 flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-6">
         
         {/* Logo and Brand */}
         <div className="text-center space-y-2">
-          <div className="inline-flex w-14 h-14 rounded-2xl bg-blue-600 text-white items-center justify-center shadow-lg shadow-blue-500/30">
+          <div className="inline-flex w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 text-white items-center justify-center shadow-xl shadow-teal-500/20">
             <Ship className="w-8 h-8" />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">
             Freight Forwarding Management System
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-teal-200/70">
             Secure Role-Based Operations & Financial Portal (Section 4 & 14)
           </p>
         </div>
 
         {/* Card */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-md">
+        <div className="bg-slate-900/90 border border-teal-800/40 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-md">
           
           <div className="mb-6">
             <h2 className="text-base font-semibold text-white">System Sign In</h2>
@@ -77,7 +77,7 @@ export const LoginScreen: React.FC = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="e.g. admin or ops"
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-950/70 border border-slate-700 rounded-xl text-white text-xs placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-950/70 border border-slate-700 rounded-xl text-white text-xs placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 />
               </div>
             </div>
@@ -91,7 +91,7 @@ export const LoginScreen: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-[11px] text-blue-400 hover:underline"
+                  className="text-[11px] text-teal-400 hover:underline"
                 >
                   {showPassword ? 'Hide' : 'Show'}
                 </button>
@@ -104,7 +104,7 @@ export const LoginScreen: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password"
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-950/70 border border-slate-700 rounded-xl text-white text-xs placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-950/70 border border-slate-700 rounded-xl text-white text-xs placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ export const LoginScreen: React.FC = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 transition cursor-pointer"
+              className="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-amber-400/20 transition cursor-pointer"
             >
               <span>Sign In to System</span>
               <ArrowRight className="w-4 h-4" />

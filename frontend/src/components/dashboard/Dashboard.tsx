@@ -51,17 +51,20 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto w-full max-w-full overflow-hidden">
       
       {/* Top Banner / Welcome */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-gradient-to-r from-slate-900 to-blue-950 p-4 sm:p-6 rounded-xl sm:rounded-2xl text-white shadow-lg border border-slate-800 w-full">
-        <div className="min-w-0">
-          <h1 className="text-lg sm:text-2xl font-bold tracking-tight">Freight Forwarding Operations Dashboard</h1>
-          <p className="text-slate-300 text-xs sm:text-sm mt-0.5 sm:mt-1">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-gradient-to-r from-teal-900 via-teal-800 to-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl text-white shadow-xl border border-teal-700/40 w-full relative overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="min-w-0 z-10">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <span>Freight Forwarding Operations Dashboard</span>
+          </h1>
+          <p className="text-teal-100/80 text-xs sm:text-sm mt-0.5 sm:mt-1">
             Real-time shipment tracking, automatic profitability calculation & operational control.
           </p>
         </div>
         {(currentRole === 'Administrator' || currentRole === 'Operations' || currentRole === 'Sales') && (
           <button
             onClick={onOpenNewJob}
-            className="flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm transition shadow-md shrink-0 cursor-pointer w-full sm:w-auto"
+            className="flex items-center justify-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm transition shadow-lg shadow-amber-400/20 shrink-0 cursor-pointer w-full sm:w-auto z-10"
           >
             <Plus className="w-4 h-4" />
             <span>Create New Job File</span>

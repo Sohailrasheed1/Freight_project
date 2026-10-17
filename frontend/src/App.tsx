@@ -35,7 +35,7 @@ const MainAppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen bg-teal-50/30 flex flex-col font-sans w-full max-w-full overflow-x-hidden">
       {/* Top Navbar with Mobile Menu toggle */}
       <Navbar 
         onOpenNewJob={() => setIsNewJobModalOpen(true)} 

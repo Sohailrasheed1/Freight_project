@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
   const totalAlerts = lowMarginJobs.length + missingCostJobs.length;
 
   return (
-    <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30 shadow-md w-full max-w-full overflow-hidden">
+    <header className="bg-slate-900/95 backdrop-blur-md text-white border-b border-teal-800/40 sticky top-0 z-30 shadow-md w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4 w-full">
         
         {/* Left: Mobile Hamburger & Brand */}
@@ -35,14 +35,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
           </button>
 
           {/* Logo */}
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-inner shrink-0">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white shadow-md shadow-teal-900/40 shrink-0">
             <Ship className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
 
           <div className="shrink-0">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="font-bold text-sm sm:text-lg tracking-wide text-white">FFMS</span>
-              <span className="hidden xs:inline-flex text-[10px] sm:text-xs bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded font-mono border border-blue-400/30">
+              <span className="hidden xs:inline-flex text-[10px] sm:text-xs bg-teal-500/20 text-teal-300 px-1.5 py-0.5 rounded font-mono border border-teal-400/30">
                 v1.0
               </span>
               <span className={`hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full font-bold items-center gap-1 ${
@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
                 <span>{isServerConnected ? 'Online' : 'Local'}</span>
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 hidden lg:block">Freight Forwarding Management System</p>
+            <p className="text-[11px] text-teal-200/70 hidden lg:block">Freight Forwarding Management System</p>
           </div>
         </div>
 
@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
           {(currentRole === 'Administrator' || currentRole === 'Operations' || currentRole === 'Sales') && (
             <button
               onClick={onOpenNewJob}
-              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white p-1.5 sm:px-3 sm:py-1.5 rounded-lg text-xs font-semibold transition shadow-sm shrink-0 cursor-pointer"
+              className="flex items-center gap-1 bg-amber-500 hover:bg-amber-400 text-slate-950 p-1.5 sm:px-3 sm:py-1.5 rounded-lg text-xs font-bold transition shadow-sm shrink-0 cursor-pointer"
               title="Add New Job"
             >
               <Plus className="w-4 h-4" />

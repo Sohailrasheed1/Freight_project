@@ -107,8 +107,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => handleSelect(item.id as ActiveTab)}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition cursor-pointer ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-teal-600 text-white shadow-sm shadow-teal-900/40 font-semibold border border-teal-500/50'
+                    : 'text-slate-300 hover:bg-teal-950/40 hover:text-teal-200'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -117,7 +117,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </div>
                 {item.badge !== undefined && (
                   <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
-                    isActive ? 'bg-blue-700 text-white' : 'bg-slate-800 text-slate-300'
+                    isActive ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-300'
                   }`}>
                     {item.badge}
                   </span>
