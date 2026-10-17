@@ -24,7 +24,7 @@ export const DocumentsView: React.FC = () => {
   );
 
   return (
-    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto text-xs">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto text-xs w-full max-w-full overflow-hidden">
       <div>
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Central Document Repository (Section 13)</h1>
         <p className="text-slate-500 text-xs mt-0.5">Secure job-linked digital storage for Bills of Lading, Commercial Invoices, Packing Lists and Quotations.</p>

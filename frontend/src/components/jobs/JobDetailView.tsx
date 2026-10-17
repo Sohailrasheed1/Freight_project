@@ -207,11 +207,11 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
   const isReadOnly = formData.is_locked && currentRole !== 'Administrator';
 
   return (
-    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto w-full max-w-full overflow-hidden">
       
       {/* Top Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-        <div className="flex items-center gap-2.5 sm:gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 w-full">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
           <button
             onClick={onBack}
             className="p-1.5 sm:p-2 bg-white hover:bg-slate-100 rounded-lg border border-slate-300 transition text-slate-700 shrink-0"
@@ -219,7 +219,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
               <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">{formData.job_number}</h1>
               <span className="text-[11px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700">
@@ -262,7 +262,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* Warnings & Alerts */}
       {(isDuplicateMBL || isDuplicateHBL || isLowMargin || isMissingCost || isReadOnly) && (
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           {isDuplicateMBL && (
             <div className="bg-rose-50 border border-rose-300 rounded-lg p-3 flex items-center gap-2 text-rose-800 text-xs font-semibold">
               <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
@@ -297,7 +297,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
       )}
 
       {/* Workflow Stepper (Section 8) */}
-      <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+      <div className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-sm overflow-x-auto w-full max-w-full">
         <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
           Job Workflow Lifecycle
         </p>
@@ -341,37 +341,37 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
       </div>
 
       {/* Real-time Profitability Banner (Section 3) */}
-      <div className="bg-slate-900 text-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-md border border-slate-800">
+      <div className="bg-slate-900 text-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-md border border-slate-800 w-full max-w-full overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-6 w-full">
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Buying</span>
-              <p className="text-sm sm:text-xl font-bold text-rose-400 mt-0.5 break-words">PKR {formData.total_buying.toLocaleString()}</p>
-              <span className="text-[9px] sm:text-[10px] text-slate-400">Vendor costs</span>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Total Buying</span>
+              <p className="text-xs xs:text-sm sm:text-xl font-bold text-rose-400 mt-0.5 truncate block" title={`PKR ${formData.total_buying.toLocaleString()}`}>PKR {formData.total_buying.toLocaleString()}</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Vendor costs</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Selling</span>
-              <p className="text-sm sm:text-xl font-bold text-emerald-400 mt-0.5 break-words">PKR {formData.total_selling.toLocaleString()}</p>
-              <span className="text-[9px] sm:text-[10px] text-slate-400">Customer revenue</span>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Total Selling</span>
+              <p className="text-xs xs:text-sm sm:text-xl font-bold text-emerald-400 mt-0.5 truncate block" title={`PKR ${formData.total_selling.toLocaleString()}`}>PKR {formData.total_selling.toLocaleString()}</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Customer revenue</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Gross Profit</span>
-              <p className={`text-sm sm:text-xl font-bold mt-0.5 break-words ${formData.gross_profit >= 0 ? 'text-blue-400' : 'text-rose-400'}`}>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Gross Profit</span>
+              <p className={`text-xs xs:text-sm sm:text-xl font-bold mt-0.5 truncate block ${formData.gross_profit >= 0 ? 'text-blue-400' : 'text-rose-400'}`} title={`PKR ${formData.gross_profit.toLocaleString()}`}>
                 PKR {formData.gross_profit.toLocaleString()}
               </p>
-              <span className="text-[9px] sm:text-[10px] text-slate-400">Selling − Buying</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Selling − Buying</span>
             </div>
-            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none">
-              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400">Profit Margin</span>
-              <p className="text-sm sm:text-xl font-bold text-violet-300 mt-0.5">{formData.profit_margin_pct.toFixed(2)}%</p>
-              <span className="text-[9px] sm:text-[10px] text-slate-400">Auto calculated</span>
+            <div className="bg-slate-800/50 p-2.5 sm:p-0 rounded-lg sm:rounded-none min-w-0">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate block">Profit Margin</span>
+              <p className="text-xs xs:text-sm sm:text-xl font-bold text-violet-300 mt-0.5 truncate block">{formData.profit_margin_pct.toFixed(2)}%</p>
+              <span className="text-[9px] sm:text-[10px] text-slate-400 truncate block">Auto calculated</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-200 gap-1 sm:gap-2 overflow-x-auto text-xs font-semibold scrollbar-none">
+      <div className="flex border-b border-slate-200 gap-1 sm:gap-2 overflow-x-auto text-xs font-semibold scrollbar-none w-full max-w-full">
         {[
           { id: 'shipment', label: '1. Shipment Info' },
           { id: 'containers', label: `2. Containers (${formData.containers.length})` },
@@ -1118,8 +1118,8 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* TAB 4: MILESTONES (Section 16) */}
       {activeTab === 'milestones' && (
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs">
-          <div className="flex items-center justify-between">
+        <div className="bg-white p-3.5 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs w-full max-w-full overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div>
               <h2 className="text-sm font-bold text-slate-900">Shipment Operational Milestones</h2>
               <p className="text-slate-500 text-[11px]">Track progress: booking, stuffing, customs, vessel departure, transshipment, arrival and cargo release.</p>
@@ -1136,7 +1136,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
                   };
                   setFormData(prev => ({ ...prev, milestones: [...prev.milestones, newM] }));
                 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition cursor-pointer self-start sm:self-auto shrink-0"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Milestone</span>
@@ -1147,13 +1147,13 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
           <div className="divide-y divide-slate-100">
             {formData.milestones.map((m, idx) => (
               <div key={m.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg ${
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className={`p-2 rounded-lg shrink-0 ${
                     m.status === 'Completed' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
                   }`}>
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <input
                       type="text"
                       disabled={isReadOnly}
@@ -1163,15 +1163,15 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
                         updated[idx].milestone_name = e.target.value;
                         setFormData(prev => ({ ...prev, milestones: updated }));
                       }}
-                      className="font-semibold text-slate-800 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-blue-500 focus:outline-none"
+                      className="font-semibold text-slate-800 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-blue-500 focus:outline-none w-full max-w-xs"
                     />
-                    <div className="text-[11px] text-slate-400 mt-0.5">
+                    <div className="text-[11px] text-slate-400 mt-0.5 truncate">
                       Planned: {m.planned_date} {m.actual_date ? `| Actual: ${m.actual_date}` : ''}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
                   <select
                     disabled={isReadOnly}
                     value={m.status}
@@ -1218,15 +1218,15 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* TAB 5: DOCUMENTS (Section 13) */}
       {activeTab === 'documents' && (
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6 text-xs">
+        <div className="bg-white p-3.5 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-6 text-xs w-full max-w-full overflow-hidden">
           <div>
             <h2 className="text-sm font-bold text-slate-900">Attached Job Documents (Section 13)</h2>
             <p className="text-slate-500 text-[11px]">Upload and store MBL, HBL, Commercial Invoices, Packing Lists, Quotations and Custom clearance papers.</p>
           </div>
 
           {!isReadOnly && (
-            <form onSubmit={handleAddDocument} className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-end gap-3">
-              <div className="flex-1 w-full">
+            <form onSubmit={handleAddDocument} className="bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-end gap-3">
+              <div className="flex-1 w-full min-w-0">
                 <label className="block text-slate-600 font-semibold mb-1">Document Name / File Title</label>
                 <input
                   type="text"
@@ -1257,7 +1257,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
               <button
                 type="submit"
-                className="w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold flex items-center justify-center gap-1.5 cursor-pointer shadow-sm shrink-0"
               >
                 <Upload className="w-4 h-4" />
                 <span>Upload Document</span>
@@ -1267,20 +1267,20 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {formData.documents.map(doc => (
-              <div key={doc.id} className="p-3.5 border border-slate-200 rounded-xl hover:shadow-sm transition bg-white flex items-start justify-between">
-                <div className="flex items-start gap-2.5">
-                  <div className="p-2 bg-blue-50 text-blue-600 rounded-lg mt-0.5">
+              <div key={doc.id} className="p-3.5 border border-slate-200 rounded-xl hover:shadow-sm transition bg-white flex items-start justify-between min-w-0">
+                <div className="flex items-start gap-2.5 min-w-0">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-lg mt-0.5 shrink-0">
                     <FileText className="w-4 h-4" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-800 line-clamp-1" title={doc.name}>{doc.name}</h3>
-                    <div className="flex items-center gap-2 mt-1">
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-slate-800 truncate" title={doc.name}>{doc.name}</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-[10px] bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-medium">
                         {doc.doc_type}
                       </span>
                       <span className="text-[10px] text-slate-400">{doc.file_size}</span>
                     </div>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="text-[10px] text-slate-400 mt-1 truncate">
                       Uploaded {doc.upload_date} by {doc.uploaded_by}
                     </p>
                   </div>
@@ -1293,7 +1293,7 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
                       const updated = formData.documents.filter(d => d.id !== doc.id);
                       setFormData(prev => ({ ...prev, documents: updated }));
                     }}
-                    className="p-1 text-slate-400 hover:text-rose-600 rounded"
+                    className="p-1 text-slate-400 hover:text-rose-600 rounded shrink-0 ml-2"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -1306,17 +1306,17 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
 
       {/* TAB 6: AUDIT TRAIL (Section 14) */}
       {activeTab === 'audit' && (
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs">
+        <div className="bg-white p-3.5 sm:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 text-xs w-full max-w-full overflow-hidden">
           <div>
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Immutable Audit Trail & Activity Log (Section 14)</span>
             </h2>
             <p className="text-slate-500 text-[11px]">Chronological record of all updates, status changes, and costing adjustments made to this job file.</p>
           </div>
 
-          <div className="border border-slate-200 rounded-lg overflow-hidden">
-            <table className="w-full text-left border-collapse">
+          <div className="border border-slate-200 rounded-lg overflow-x-auto w-full max-w-full">
+            <table className="w-full min-w-[600px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                   <th className="p-2.5">Timestamp</th>
@@ -1329,15 +1329,15 @@ export const JobDetailView: React.FC<JobDetailViewProps> = ({ job, onBack }) => 
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 {formData.audit_logs.map(log => (
                   <tr key={log.id} className="hover:bg-slate-50">
-                    <td className="p-2.5 whitespace-nowrap font-mono text-slate-500">{log.timestamp}</td>
-                    <td className="p-2.5 font-medium text-slate-900">{log.user_name}</td>
-                    <td className="p-2.5">
+                    <td className="p-2.5 whitespace-nowrap font-mono text-slate-500 text-[11px]">{log.timestamp}</td>
+                    <td className="p-2.5 font-medium text-slate-900 whitespace-nowrap">{log.user_name}</td>
+                    <td className="p-2.5 whitespace-nowrap">
                       <span className="px-2 py-0.5 rounded text-[10px] bg-slate-100 text-slate-700 font-semibold">
                         {log.user_role}
                       </span>
                     </td>
-                    <td className="p-2.5 font-mono font-semibold text-blue-600">{log.action}</td>
-                    <td className="p-2.5 text-slate-600">{log.details}</td>
+                    <td className="p-2.5 font-mono font-semibold text-blue-600 whitespace-nowrap">{log.action}</td>
+                    <td className="p-2.5 text-slate-600 min-w-[200px]">{log.details}</td>
                   </tr>
                 ))}
               </tbody>

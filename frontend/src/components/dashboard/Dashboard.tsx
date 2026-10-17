@@ -48,12 +48,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
   });
 
   return (
-    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto w-full max-w-full overflow-hidden">
       
       {/* Top Banner / Welcome */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-gradient-to-r from-slate-900 to-blue-950 p-4 sm:p-6 rounded-xl sm:rounded-2xl text-white shadow-lg border border-slate-800">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Freight Forwarding Operations Dashboard</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-gradient-to-r from-slate-900 to-blue-950 p-4 sm:p-6 rounded-xl sm:rounded-2xl text-white shadow-lg border border-slate-800 w-full">
+        <div className="min-w-0">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-tight">Freight Forwarding Operations Dashboard</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-0.5 sm:mt-1">
             Real-time shipment tracking, automatic profitability calculation & operational control.
           </p>
@@ -71,9 +71,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
 
       {/* Warnings Banner if any */}
       {(lowMarginJobs.length > 0 || missingCostJobs.length > 0) && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 sm:p-4 flex items-start gap-2.5 sm:gap-3 text-amber-800 text-xs sm:text-sm">
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 sm:p-4 flex items-start gap-2.5 sm:gap-3 text-amber-800 text-xs sm:text-sm w-full">
           <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 shrink-0 mt-0.5" />
-          <div className="space-y-0.5 sm:space-y-1">
+          <div className="space-y-0.5 sm:space-y-1 min-w-0">
             <span className="font-semibold text-amber-900">Attention Required:</span>
             {lowMarginJobs.length > 0 && (
               <p>• {lowMarginJobs.length} job(s) have a profit margin below 10% (Low Margin Alert).</p>
@@ -86,124 +86,124 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
       )}
 
       {/* 8 Mandatory KPI Cards Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 w-full">
         
         {/* 1. Total Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Jobs</span>
-            <div className="p-1.5 sm:p-2 bg-blue-50 text-blue-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0">
               <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-lg sm:text-2xl font-bold text-slate-800">{totalJobs}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">All shipments</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-base sm:text-2xl font-bold text-slate-800 block truncate">{totalJobs}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">All shipments</span>
           </div>
         </div>
 
         {/* 2. Open Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Open Jobs</span>
-            <div className="p-1.5 sm:p-2 bg-amber-50 text-amber-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-amber-50 text-amber-600 rounded-lg shrink-0">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-lg sm:text-2xl font-bold text-amber-600">{openJobs}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Active / not closed</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-base sm:text-2xl font-bold text-amber-600 block truncate">{openJobs}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Active / not closed</span>
           </div>
         </div>
 
         {/* 3. Total Buying Cost */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Buying</span>
-            <div className="p-1.5 sm:p-2 bg-rose-50 text-rose-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-rose-50 text-rose-600 rounded-lg shrink-0">
               <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-base sm:text-2xl font-bold text-slate-800 break-words">PKR {totalBuying.toLocaleString()}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Vendor costs</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-xs xs:text-sm sm:text-2xl font-bold text-slate-800 block truncate" title={`PKR ${totalBuying.toLocaleString()}`}>PKR {totalBuying.toLocaleString()}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Vendor costs</span>
           </div>
         </div>
 
         {/* 4. Total Selling Revenue */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Selling</span>
-            <div className="p-1.5 sm:p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-emerald-50 text-emerald-600 rounded-lg shrink-0">
               <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-base sm:text-2xl font-bold text-slate-800 break-words">PKR {totalSelling.toLocaleString()}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Billed revenue</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-xs xs:text-sm sm:text-2xl font-bold text-slate-800 block truncate" title={`PKR ${totalSelling.toLocaleString()}`}>PKR {totalSelling.toLocaleString()}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Billed revenue</span>
           </div>
         </div>
 
         {/* 5. Gross Profit */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Gross Profit</span>
-            <div className="p-1.5 sm:p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-indigo-50 text-indigo-600 rounded-lg shrink-0">
               <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-base sm:text-2xl font-bold text-indigo-700 break-words">PKR {grossProfit.toLocaleString()}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Selling less Buying</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-xs xs:text-sm sm:text-2xl font-bold text-indigo-700 block truncate" title={`PKR ${grossProfit.toLocaleString()}`}>PKR {grossProfit.toLocaleString()}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Selling less Buying</span>
           </div>
         </div>
 
         {/* 6. Profit Margin % */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Margin %</span>
-            <div className="p-1.5 sm:p-2 bg-violet-50 text-violet-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-violet-50 text-violet-600 rounded-lg shrink-0">
               <Percent className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-lg sm:text-2xl font-bold text-violet-700">{profitMarginPct.toFixed(2)}%</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Overall profitability</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-base sm:text-2xl font-bold text-violet-700 block truncate">{profitMarginPct.toFixed(2)}%</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Overall profitability</span>
           </div>
         </div>
 
         {/* 7. This Month's Jobs */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Month's Jobs</span>
-            <div className="p-1.5 sm:p-2 bg-sky-50 text-sky-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-sky-50 text-sky-600 rounded-lg shrink-0">
               <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-lg sm:text-2xl font-bold text-slate-800">{thisMonthJobs}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">October 2026 volume</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-base sm:text-2xl font-bold text-slate-800 block truncate">{thisMonthJobs}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">October volume</span>
           </div>
         </div>
 
         {/* 8. This Month's Profit */}
-        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition">
+        <div className="bg-white p-3 sm:p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow transition min-w-0">
           <div className="flex items-center justify-between">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Month's Profit</span>
-            <div className="p-1.5 sm:p-2 bg-teal-50 text-teal-600 rounded-lg">
+            <div className="p-1.5 sm:p-2 bg-teal-50 text-teal-600 rounded-lg shrink-0">
               <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
-          <div className="mt-2 sm:mt-3">
-            <span className="text-base sm:text-2xl font-bold text-teal-700 break-words">PKR {thisMonthProfit.toLocaleString()}</span>
-            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5">Current month profit</span>
+          <div className="mt-2 sm:mt-3 min-w-0">
+            <span className="text-xs xs:text-sm sm:text-2xl font-bold text-teal-700 block truncate" title={`PKR ${thisMonthProfit.toLocaleString()}`}>PKR {thisMonthProfit.toLocaleString()}</span>
+            <span className="text-[10px] sm:text-xs text-slate-500 block mt-0.5 truncate">Current month</span>
           </div>
         </div>
 
       </div>
 
       {/* Operational Workflow Stages Bar */}
-      <div className="bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+      <div className="bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 shadow-sm w-full max-w-full overflow-hidden">
         <h2 className="text-sm sm:text-base font-semibold text-slate-800 mb-2 sm:mb-3">Job Workflow Pipeline Distribution</h2>
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-1.5 sm:gap-2">
           {[
@@ -212,7 +212,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
           ].map(st => {
             const count = statusCounts[st] || 0;
             return (
-              <div key={st} className="bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100 text-center">
+              <div key={st} className="bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100 text-center min-w-0">
                 <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 block truncate">{st}</span>
                 <span className={`text-sm sm:text-lg font-bold block mt-0.5 sm:mt-1 ${count > 0 ? 'text-blue-600' : 'text-slate-400'}`}>
                   {count}
@@ -224,22 +224,28 @@ export const Dashboard: React.FC<DashboardProps> = ({ onOpenNewJob, onSelectJob,
       </div>
 
       {/* Recent Jobs Table */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden w-full max-w-full">
         <div className="p-3.5 sm:p-4 sm:px-6 border-b border-slate-100 flex items-center justify-between">
-          <div>
-            <h2 className="text-sm sm:text-base font-semibold text-slate-800">Recent Job Files</h2>
-            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">Click any job to open the complete job file and charge sheet</p>
+          <div className="min-w-0">
+            <h2 className="text-sm sm:text-base font-semibold text-slate-800 truncate">Recent Job Files</h2>
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate">Click any job to open the complete job file and charge sheet</p>
           </div>
           <button
             onClick={onViewAllJobs}
-            className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1"
+            className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1 shrink-0"
           >
             <span>View All</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Mobile Swipe Hint */}
+        <div className="md:hidden px-3.5 py-1.5 bg-blue-50/60 text-[10px] text-blue-700 border-b border-blue-100 flex items-center justify-between">
+          <span>Swipe table left/right to view all details</span>
+          <span className="font-bold">→</span>
+        </div>
+
+        <div className="overflow-x-auto w-full max-w-full">
           <table className="w-full min-w-[760px] text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">

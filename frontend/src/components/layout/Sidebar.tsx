@@ -54,6 +54,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'audit', label: 'Security & Audit Log', icon: ShieldCheck },
   ];
 
+  React.useEffect(() => {
+    if (isOpenMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpenMobile]);
+
   const handleSelect = (tab: ActiveTab) => {
     setActiveTab(tab);
     if (onCloseMobile) {
@@ -142,14 +153,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Mobile Drawer Backdrop & Modal */}
       {isOpenMobile && (
-        <div className="md:hidden fixed inset-0 z-50 flex">
+        <div className="md:hidden fixed inset-0 z-[100] flex">
           {/* Backdrop */}
           <div 
             className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity"
             onClick={onCloseMobile}
           />
           {/* Drawer content */}
-          <aside className="relative w-72 max-w-[85vw] bg-slate-900 text-slate-300 shadow-2xl flex flex-col z-10 h-full">
+          <aside className="relative w-72 max-w-[85vw] bg-slate-900 text-slate-300 shadow-2xl flex flex-col z-10 h-full overflow-hidden">
             {navContent}
           </aside>
         </div>

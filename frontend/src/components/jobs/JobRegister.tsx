@@ -114,11 +114,11 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
   };
 
   return (
-    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 max-w-7xl mx-auto w-full max-w-full overflow-hidden">
       
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 w-full">
+        <div className="min-w-0">
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Job Register</h1>
           <p className="text-slate-500 text-xs mt-0.5">
             Operational register with automatic multi-currency charges, buying cost, selling revenue and profit.
@@ -303,8 +303,14 @@ export const JobRegister: React.FC<JobRegisterProps> = ({ onSelectJob, onOpenNew
       </div>
 
       {/* Main Table Card */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden w-full max-w-full">
+        {/* Mobile Swipe Hint */}
+        <div className="md:hidden px-3.5 py-1.5 bg-blue-50/60 text-[10px] text-blue-700 border-b border-blue-100 flex items-center justify-between">
+          <span>Swipe register left/right to view all fields</span>
+          <span className="font-bold">→</span>
+        </div>
+
+        <div className="overflow-x-auto w-full max-w-full">
           <table className="w-full min-w-[950px] text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 uppercase tracking-wider text-[11px]">

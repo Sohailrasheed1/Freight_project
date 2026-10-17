@@ -19,15 +19,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
   const totalAlerts = lowMarginJobs.length + missingCostJobs.length;
 
   return (
-    <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30 shadow-md">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
+    <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30 shadow-md w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4 w-full">
         
         {/* Left: Mobile Hamburger & Brand */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={onToggleMobileMenu}
-            className="md:hidden p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition focus:outline-none"
+            className="md:hidden p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-white hover:bg-slate-700 transition focus:outline-none border border-slate-700 shrink-0"
             aria-label="Toggle Navigation Menu"
           >
             <Menu className="w-5 h-5" />
@@ -38,11 +39,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
             <Ship className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
 
-          <div>
+          <div className="shrink-0">
             <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="font-bold text-base sm:text-lg tracking-wide text-white">FFMS</span>
-              <span className="text-[10px] sm:text-xs bg-blue-500/20 text-blue-300 px-1.5 sm:px-2 py-0.5 rounded font-mono border border-blue-400/30">
-                v1.0 Pro
+              <span className="font-bold text-sm sm:text-lg tracking-wide text-white">FFMS</span>
+              <span className="hidden xs:inline-flex text-[10px] sm:text-xs bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded font-mono border border-blue-400/30">
+                v1.0
               </span>
               <span className={`hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full font-bold items-center gap-1 ${
                 isServerConnected 
@@ -50,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
                   : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
               }`}>
                 <span className={`w-1.5 h-1.5 rounded-full ${isServerConnected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
-                <span>{isServerConnected ? 'API Online' : 'Local Cache'}</span>
+                <span>{isServerConnected ? 'Online' : 'Local'}</span>
               </span>
             </div>
             <p className="text-[11px] text-slate-400 hidden lg:block">Freight Forwarding Management System</p>
@@ -58,22 +59,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-1.5 sm:gap-3">
+        <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
           
           {/* Quick Add Job Button */}
           {(currentRole === 'Administrator' || currentRole === 'Operations' || currentRole === 'Sales') && (
             <button
               onClick={onOpenNewJob}
-              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition shadow-sm shrink-0 cursor-pointer"
+              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white p-1.5 sm:px-3 sm:py-1.5 rounded-lg text-xs font-semibold transition shadow-sm shrink-0 cursor-pointer"
+              title="Add New Job"
             >
               <Plus className="w-4 h-4" />
-              <span className="hidden xs:inline sm:inline">New Job</span>
+              <span className="hidden sm:inline">New Job</span>
             </button>
           )}
 
           {/* Alert Indicator */}
           <div className="relative group">
-            <button className="p-1.5 sm:p-2 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 transition">
+            <button className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 transition">
               <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
               {totalAlerts > 0 && (
                 <span className="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
@@ -97,12 +99,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
           </div>
 
           {/* Role Switcher */}
-          <div className="flex items-center gap-1.5 bg-slate-800/80 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-slate-700">
-            <Shield className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+          <div className="flex items-center gap-1 bg-slate-800/80 px-1.5 sm:px-2.5 py-1 rounded-lg border border-slate-700">
+            <Shield className="w-3.5 h-3.5 text-blue-400 shrink-0 hidden xs:block" />
             <select
               value={currentRole}
               onChange={(e) => setCurrentRole(e.target.value as UserRole)}
-              className="bg-transparent text-[11px] sm:text-xs font-medium text-white focus:outline-none cursor-pointer max-w-[85px] sm:max-w-none truncate"
+              className="bg-transparent text-[10px] sm:text-xs font-medium text-white focus:outline-none cursor-pointer max-w-[65px] sm:max-w-none truncate"
             >
               {roles.map(r => (
                 <option key={r} value={r} className="bg-slate-800 text-white">
@@ -113,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenNewJob, onToggleMobileMenu
           </div>
 
           {/* Current User Badge & Logout */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 border-l border-slate-700 pl-1.5 sm:pl-3">
+          <div className="flex items-center gap-1 sm:gap-2 border-l border-slate-700 pl-1 sm:pl-2.5">
             <div className="hidden xl:flex items-center gap-1.5 text-xs text-slate-300">
               <UserCheck className="w-4 h-4 text-emerald-400" />
               <span className="truncate max-w-[100px]">{currentUser}</span>

@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-slate-50 text-slate-900 antialiased font-sans;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
   }
   
   #root {
@@ -14,6 +24,7 @@
     margin: 0;
     text-align: left;
     border: none;
+    overflow-x: hidden;
   }
 }
 

@@ -12,13 +12,6 @@ import { DocumentsView } from './components/documents/DocumentsView';
 import { AuditView } from './components/audit/AuditView';
 import { LoginScreen } from './components/auth/LoginScreen';
 import { Job } from './types';
-import { 
-  LayoutDashboard, 
-  Layers, 
-  PlusCircle, 
-  BarChart3, 
-  Menu 
-} from 'lucide-react';
 
 const MainAppContent: React.FC = () => {
   const { jobs, isAuthenticated } = useApp();
@@ -42,7 +35,7 @@ const MainAppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans w-full max-w-full overflow-x-hidden">
       {/* Top Navbar with Mobile Menu toggle */}
       <Navbar 
         onOpenNewJob={() => setIsNewJobModalOpen(true)} 
@@ -50,7 +43,7 @@ const MainAppContent: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className="flex-1 flex overflow-hidden relative w-full max-w-full">
         
         {/* Left Sidebar (Desktop + Mobile Drawer) */}
         <Sidebar 
@@ -65,7 +58,7 @@ const MainAppContent: React.FC = () => {
         />
 
         {/* Dynamic Center Panel */}
-        <main className="flex-1 overflow-y-auto bg-slate-50 pb-20 md:pb-6">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden bg-slate-50 pb-6 w-full max-w-full">
           {selectedJob ? (
             <JobDetailView 
               job={selectedJob} 
@@ -99,64 +92,6 @@ const MainAppContent: React.FC = () => {
             </>
           )}
         </main>
-      </div>
-
-      {/* Mobile Bottom Navigation Bar for 1-Tap Access */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 flex items-center justify-around py-2 px-1 text-slate-400 shadow-lg">
-        <button
-          onClick={() => {
-            setSelectedJob(null);
-            setActiveTab('dashboard');
-          }}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded transition ${
-            activeTab === 'dashboard' && !selectedJob ? 'text-blue-400 font-bold' : 'hover:text-white'
-          }`}
-        >
-          <LayoutDashboard className="w-4 h-4" />
-          <span className="text-[10px]">Dashboard</span>
-        </button>
-
-        <button
-          onClick={() => {
-            setSelectedJob(null);
-            setActiveTab('jobs');
-          }}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded transition relative ${
-            activeTab === 'jobs' && !selectedJob ? 'text-blue-400 font-bold' : 'hover:text-white'
-          }`}
-        >
-          <Layers className="w-4 h-4" />
-          <span className="text-[10px]">Jobs ({openJobCount})</span>
-        </button>
-
-        {/* Center Quick Add Job Button */}
-        <button
-          onClick={() => setIsNewJobModalOpen(true)}
-          className="flex flex-col items-center -mt-4 bg-blue-600 text-white p-2 rounded-full shadow-lg shadow-blue-600/40 active:scale-95 transition"
-        >
-          <PlusCircle className="w-6 h-6" />
-        </button>
-
-        <button
-          onClick={() => {
-            setSelectedJob(null);
-            setActiveTab('reports');
-          }}
-          className={`flex flex-col items-center gap-0.5 p-1 rounded transition ${
-            activeTab === 'reports' && !selectedJob ? 'text-blue-400 font-bold' : 'hover:text-white'
-          }`}
-        >
-          <BarChart3 className="w-4 h-4" />
-          <span className="text-[10px]">Reports</span>
-        </button>
-
-        <button
-          onClick={() => setIsMobileSidebarOpen(true)}
-          className="flex flex-col items-center gap-0.5 p-1 rounded hover:text-white transition"
-        >
-          <Menu className="w-4 h-4" />
-          <span className="text-[10px]">More Menu</span>
-        </button>
       </div>
 
       {/* Quick Job Creation Modal */}
